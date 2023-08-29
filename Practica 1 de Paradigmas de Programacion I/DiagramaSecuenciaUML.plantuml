@@ -1,0 +1,38 @@
+@startuml namespace
+actor Cliente
+participant "Interfaz de Usuario" as IU
+participant "Sistema" as Sistema
+participant Habitacion
+participant "Gestor Reservas" as Gestor
+
+activate Cliente
+Cliente -> IU: Seleccionar habitación y fechas
+activate IU
+IU -> Sistema: Solicitar disponibilidad
+activate Sistema
+Sistema --> Habitacion: Consultar disponibilidad
+activate Habitacion
+Sistema <-- Habitacion: Habitaciones disponibles
+deactivate Habitacion
+Sistema --> Gestor: Verificar reserva
+activate Gestor
+Sistema <-- Gestor: Habitación disponible
+deactivate Gestor
+Sistema -> IU: Mostrar opciones de reserva
+deactivate Sistema
+IU --> Cliente: Seleccionar tipo de habitación y detalles
+deactivate IU
+Cliente -> IU: Ingresar detalles y confirmar reserva
+activate IU
+IU -> Sistema: Enviar detalles de reserva
+activate Sistema
+Sistema -> Gestor: Crear reserva
+activate Gestor
+Sistema <-- Gestor: Reserva creada
+deactivate Gestor
+Sistema --> IU: Confirmación de reserva
+deactivate Sistema
+IU --> Cliente: Confirmación de reserva
+deactivate IU
+deactivate Cliente
+@enduml

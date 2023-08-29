@@ -1,0 +1,43 @@
+@startuml namespace
+class Habitacion {
+    - numero: int
+    - precioPorNoche: double
+    + Habitacion(numero: int, precioPorNoche: double)
+    + getNumero(): int
+    + getPrecioPorNoche(): double
+    + mostrarInformacion()
+    + calcularCostoTotal(numNoches: int): double
+}
+
+class HabitacionIndividual {
+    - tieneVistaAlMar: boolean
+    + HabitacionIndividual(numero: int, precioPorNoche: double, tieneVistaAlMar: boolean)
+    + TieneVistaAlMar(): boolean
+    + mostrarInformacion()
+}
+
+class HabitacionDoble {
+    - numeroCamas: int
+    + HabitacionDoble(numero: int, precioPorNoche: double, numeroCamas: int)
+    + getNumeroCamas(): int
+    + mostrarInformacion()
+}
+
+class HabitacionSuite {
+    - tieneServicioMayordomo: boolean
+    + HabitacionSuite(numero: int, precioPorNoche: double, tieneServicioMayordomo: boolean)
+    + TieneServicioMayordomo(): boolean 
+    + mostrarInformacion()
+}
+
+class HabitacionEconomica {
+    - esCompartida: boolean
+    + HabitacionEconomica(numero: int, precioPorNoche: double, esCompartida: boolean )
+    + EsCompartida(): boolean
+    + mostrarInformacion()
+}
+Habitacion <|-- HabitacionIndividual
+Habitacion <|-- HabitacionDoble
+Habitacion <|-- HabitacionSuite
+Habitacion <|-- HabitacionEconomica
+@enduml

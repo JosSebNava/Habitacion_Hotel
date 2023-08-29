@@ -1,0 +1,12 @@
+@startuml namespace
+left to right direction
+actor Cliente as Client
+rectangle "Gestión de Reserva de Habitacion" as ReservationSystem {
+    usecase "Realizar Reserva" as MakeReservation
+    usecase "Modificar Reserva" as ModifyReservation
+    usecase "Cancelar Reserva" as CancelReservation
+}
+Client --> MakeReservation: Realiza
+Client --> ModifyReservation: Modifica
+Client --> CancelReservation: Cancela
+@enduml
